@@ -253,7 +253,7 @@ class PdfBuilder implements Responsable
 
         $response = $this->doRequest()->getBody();
 
-        $file = fopen($path, 'w');
+        $file = fopen($path, 'wb');
         if ($file === false) {
             throw NativeFunctionErrored::createFromLastPhpError();
         }
