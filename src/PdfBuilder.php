@@ -259,7 +259,7 @@ class PdfBuilder implements Responsable
         }
 
         // Streaming for large files, instead of loading the whole thing into memory
-        while (! feof($response)) {
+        while (!$response->eof()) {
             $chunk = fread($response, 1024 * 512); // read up to 0.5 MiB at a time
             if (fwrite($file, $chunk) === false) {
                 throw NativeFunctionErrored::createFromLastPhpError();
