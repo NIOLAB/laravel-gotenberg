@@ -344,6 +344,13 @@ class PdfBuilder implements Responsable
     {
         $request = Http::baseUrl(config('gotenberg.host'));
 
+        if (config('gotenberg.auth.username') && config('gotenberg.auth.password')) {
+            $request = $request->withBasicAuth(
+                config('gotenberg.auth.username'),
+                config('gotenberg.auth.password')
+            );
+        }
+
         $postData = [
             'printBackground' => true,
         ];
